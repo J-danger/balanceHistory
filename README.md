@@ -2,4 +2,4 @@
 
 Import your CSV from solscan.io
 
-Deployed: https://j-danger.github.io/balanceHistory/
+Deployed: https://howe-steve.github.io/balanceHistory/
