@@ -51,7 +51,7 @@ function App() {
   return (
     <div className="App" onDrop={handleDrop} onDragOver={handleDragOver}>
       <header className="App-header">
-        <p>Drag and drop your CSV file here to analyze your Solana assets over time.</p>
+        <p>Drag and drop your CSV file here</p>
         <input 
           type="number" 
           value={block || ''} 
@@ -91,8 +91,9 @@ function Overview({ data, block }) {
     return acc;
   }, {});
 
-  // Filter to only show tokens with balance > 0.00
-  const balanceList = Object.values(tokenBalances).filter(token => token.balance > 0.00);
+  // Filter to only show tokens with balance > 0.00, using epsilon for precision
+  const epsilon = 0.00000001; // Adjust this value if needed for more or less precision
+  const balanceList = Object.values(tokenBalances).filter(token => token.balance > epsilon);
 
   // Find first and last transaction dates
   const firstTransactionDate = new Date(Math.min(...data.map(entry => parseInt(entry.Time))) * 1000).toLocaleDateString();
@@ -100,6 +101,7 @@ function Overview({ data, block }) {
 
   return (
     <div className="overview">
+      {/* Uncomment the following if you want to display this information */}
       {/* <h2>Your Financial Overview</h2>
       <div className="info-box">
         <p>First Transaction Date: <span>{firstTransactionDate}</span></p>
