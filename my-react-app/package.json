@@ -2,7 +2,7 @@
   "name": "my-react-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yourgithubusername.github.io/your-repo-name",
+  "homepage": "https://J-Danger.github.io/balanceHistory",
   "dependencies": {
     "cra-template": "1.2.0",
     "papaparse": "^5.5.1",
