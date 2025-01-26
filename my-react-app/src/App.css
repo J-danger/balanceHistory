@@ -1,0 +1,99 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-header {
+  width: 80%;
+  margin: auto;
+}
+
+.overview {
+  width: 90%;
+  max-width: 75vw; /* Reduced max-width for better fitting */
+  margin: 20px auto;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-y: auto; /* Adds scroll if content exceeds box height */
+  max-height: 80vh; /* Limits the height to 80% of viewport height */
+}
+
+.info-box {
+  background-color: #444;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.info-box p {
+  margin: 5px 0;
+  font-size: 0.9em; /* Smaller font size for better fitting */
+}
+
+.info-box span {
+  color: #61dafb;
+}
+
+.token-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0; /* Remove default margin */
+}
+
+.token-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #555;
+  font-size: 0.8em; /* Smaller font size for better fitting */
+  word-break: break-all; /* Ensures long token names wrap */
+}
+
+.token-list li:last-child {
+  border-bottom: none;
+}
+
+.token-name {
+  flex: 2;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds ellipsis if text overflows */
+  white-space: nowrap; /* Prevents wrapping */
+}
+
+.token-balance {
+  flex: 1;
+  text-align: right;
+}
+
+.token-unit {
+  flex: 1;
+  text-align: left;
+  color: #61dafb;
+}
+
+input[type="number"], input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  background-color: #16213e;
+  color: white;
+}
+
+.error {
+  color: #ff6b6b;
+}
+
+.no-data {
+  color: #4ade80;
+}
