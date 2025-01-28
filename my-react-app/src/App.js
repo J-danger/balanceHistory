@@ -101,7 +101,7 @@ function Overview({ data, block }) {
 
   return (
     <div className="overview">
-      {/* Uncomment the following if you want to display this information */}
+     
       {/* <h2>Your Financial Overview</h2>
       <div className="info-box">
         <p>First Transaction Date: <span>{firstTransactionDate}</span></p>
@@ -122,8 +122,7 @@ function Overview({ data, block }) {
       ) : (
         <p>No tokens with a balance greater than 0.00 found.</p>
       )}
-      <h3>Assets Over Time (up to Block {block})</h3>
-      {/* Here you could add more detailed analysis or time series data if needed */}
+      <h3>Assets Over Time (up to Block {block})</h3
     </div>
   );
 }
