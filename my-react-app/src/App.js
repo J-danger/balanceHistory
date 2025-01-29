@@ -51,7 +51,7 @@ function App() {
   return (
     <div className="App" onDrop={handleDrop} onDragOver={handleDragOver}>
       <header className="App-header">
-        <p>Drag and drop your CSV file here</p>
+        <p>Drag and drop your Solscan.io CSV file here</p>
         <input 
           type="number" 
           value={block || ''} 
@@ -100,31 +100,25 @@ function Overview({ data, block }) {
   const lastTransactionDate = new Date(Math.max(...data.map(entry => parseInt(entry.Time))) * 1000).toLocaleDateString();
 
   return (
-    <div className="overview">
-      {/* Uncomment the following if you want to display this information */}
-      {/* <h2>Your Financial Overview</h2>
-      <div className="info-box">
-        <p>First Transaction Date: <span>{firstTransactionDate}</span></p>
-        <p>Last Transaction Date: <span>{lastTransactionDate}</span></p>
-        <p>Total Transactions through Block {block}: <span>{dataUpToBlock.length}</span></p>
-      </div> */}
-      <h3>Wallet Balance at Block {block}</h3>
-      {balanceList.length > 0 ? (
-        <ul className="token-list">
-          {balanceList.map((token, index) => (
-            <li key={index}>
-              <span className="token-name">{token.name}:</span> 
-              <span className="token-balance">{(token.balance).toFixed(8)}</span> 
+  <div className="overview">
+    <h3>Wallet Balance at Block {block}</h3>
+    {balanceList.length > 0 ? (
+      <ul className="token-list">
+        {balanceList.map((token, index) => (
+          <li key={token.name}>
+            <div className="token-info">
+              <span className="token-name">{token.name}:</span>
+              <span className="token-balance">{(token.balance).toFixed(8)}</span>
               <span className="token-unit">Tokens</span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No tokens with a balance greater than 0.00 found.</p>
-      )}
-      <h3>Assets Over Time (up to Block {block})</h3>
-      {/* Here you could add more detailed analysis or time series data if needed */}
-    </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p className="no-data">No tokens with a balance greater than 0.00 found.</p>
+    )}   
+    {/* Placeholder for future analysis or time series data */}
+  </div>
   );
 }
 

@@ -1,99 +1,147 @@
+:root {
+  /* Dark background, a muted dark blue for a techy, finance feel */
+  --background-primary: #1a1a2e;
+  
+  /* Primary color, a deep blue for emphasis */
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-active: #1d4ed8;
+  
+  /* Secondary color, a slightly lighter shade for secondary elements */
+  --secondary-color: #2e2e4d;
+  --secondary-hover: #3e3e5d;
+  --secondary-active: #4e4e6d;
+  
+  /* Background colors for different elements */
+  --background-secondary: #262645; /* Darker for main content areas */
+  --background-tertiary: #333355; /* For hover states, slightly lighter */
+  
+  /* Text colors */
+  --text-primary: #ffffff; /* White for main text for high contrast */
+  --text-secondary: #c0c0d6; /* Lighter grey for secondary information */
+  --text-tertiary: #a0a0b6; /* Even lighter for less important details */
+  
+  /* Border colors */
+  --border-color: #333355; /* Matches the tertiary background for subtle separation */
+  --border-hover: #444466; /* Slightly lighter for hover effects */
+  
+  /* Shadow color for depth */
+  --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: var(--background-primary);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--text-primary);
+  padding: 2rem;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .App-header {
-  width: 80%;
-  margin: auto;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .overview {
   width: 90%;
-  max-width: 75vw; /* Reduced max-width for better fitting */
-  margin: 20px auto;
-  background-color: #333;
-  padding: 20px;
-  border-radius: 8px;
-  overflow-y: auto; /* Adds scroll if content exceeds box height */
-  max-height: 80vh; /* Limits the height to 80% of viewport height */
+  max-width: 100%;
+  background: var(--background-secondary);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px var(--shadow-color);
+  overflow-y: auto;
+  max-height: calc(100vh - 160px);
+  margin: 2rem 0;
+  border: 1px solid var(--border-color);
 }
 
-.info-box {
-  background-color: #444;
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-}
-
-.info-box p {
-  margin: 5px 0;
-  font-size: 0.9em; /* Smaller font size for better fitting */
-}
-
-.info-box span {
-  color: #61dafb;
+h3 {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  position: relative;
 }
 
 .token-list {
   list-style-type: none;
   padding: 0;
-  margin: 0; /* Remove default margin */
+  margin: 0;
+  width: 100%;
 }
 
 .token-list li {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid #555;
-  font-size: 0.8em; /* Smaller font size for better fitting */
-  word-break: break-all; /* Ensures long token names wrap */
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.token-list li:hover {
+  background-color: var(--background-tertiary);
+  transform: translateX(5px);
+  box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .token-list li:last-child {
   border-bottom: none;
 }
 
+.token-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
 .token-name {
   flex: 2;
   text-align: left;
   overflow: hidden;
-  text-overflow: ellipsis; /* Adds ellipsis if text overflows */
-  white-space: nowrap; /* Prevents wrapping */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1rem;
+  color: var(--text-secondary);
 }
 
 .token-balance {
   flex: 1;
   text-align: right;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-primary);
 }
 
 .token-unit {
   flex: 1;
   text-align: left;
-  color: #61dafb;
-}
-
-input[type="number"], input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 4px;
-  background-color: #16213e;
-  color: white;
-}
-
-.error {
-  color: #ff6b6b;
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  font-weight: 400;
 }
 
 .no-data {
-  color: #4ade80;
+  color: var(--primary-color);
+  font-style: italic;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: rgba(var(--primary-color), 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(var(--primary-color), 0.2);
 }
