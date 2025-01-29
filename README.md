@@ -1,3 +1,5 @@
-## Solana wallet token balance checker, at a specified block
+## Solana wallet token balance at a specified block
 
-Deployed: https://j-danger.github.io/balanceHistory/
+Import your CSV from solscan.io
+
+Deployed: https://howe-steve.github.io/balanceHistory/
