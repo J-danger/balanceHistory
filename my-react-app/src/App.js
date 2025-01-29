@@ -68,7 +68,6 @@ function App() {
     </div>
   );
 }
-
 function Overview({ data, block }) {
   // Convert string amounts to numbers, handle the 'out' flow
   const processedData = data.map(entry => ({
@@ -99,26 +98,54 @@ function Overview({ data, block }) {
   const firstTransactionDate = new Date(Math.min(...data.map(entry => parseInt(entry.Time))) * 1000).toLocaleDateString();
   const lastTransactionDate = new Date(Math.max(...data.map(entry => parseInt(entry.Time))) * 1000).toLocaleDateString();
 
+  // New function to render transactions
+  const renderTransactions = () => {
+    const transactionsUpToBlock = dataUpToBlock.map((entry, index) => (
+      <li key={index} className="transaction-item">
+        <div className="transaction-details">
+          <span className="transaction-date">{new Date(parseInt(entry.Time) * 1000).toLocaleString()}</span>
+          <span className="transaction-amount">{entry.Amount} {entry.TokenAddress}</span>
+          <span className="transaction-flow">{entry.Flow === -1 ? 'OUT' : 'IN'}</span>
+        </div>
+      </li>
+    ));
+
+    return (
+      <div className="transactions-section">
+        <h3>Transactions Up To Block {block}</h3>
+        {transactionsUpToBlock.length > 0 ? (
+          <ul className="transaction-list">
+            {transactionsUpToBlock}
+          </ul>
+        ) : (
+          <p className="no-data">No transactions found up to this block.</p>
+        )}
+      </div>
+    );
+  };
+
   return (
-  <div className="overview">
-    <h3>Wallet Balance at Block {block}</h3>
-    {balanceList.length > 0 ? (
-      <ul className="token-list">
-        {balanceList.map((token, index) => (
-          <li key={token.name}>
-            <div className="token-info">
-              <span className="token-name">{token.name}:</span>
-              <span className="token-balance">{(token.balance).toFixed(8)}</span>
-              <span className="token-unit">Tokens</span>
-            </div>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p className="no-data">No tokens with a balance greater than 0.00 found.</p>
-    )}   
-    {/* Placeholder for future analysis or time series data */}
-  </div>
+    <div className="overview">
+      <h3>Wallet Balance at Block {block}</h3>
+      {balanceList.length > 0 ? (
+        <ul className="token-list">
+          {balanceList.map((token, index) => (
+            <li key={token.name}>
+              <div className="token-info">
+                <span className="token-name">{token.name}:</span>
+                <span className="token-balance">{(token.balance).toFixed(8)}</span>
+                <span className="token-unit">Tokens</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="no-data">No tokens with a balance greater than 0.00 found.</p>
+      )}   
+      
+      {/* New Transactions Section */}
+      {renderTransactions()}
+    </div>
   );
 }
 

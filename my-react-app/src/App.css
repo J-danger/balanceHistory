@@ -1,31 +1,18 @@
 :root {
-  /* Dark background, a muted dark blue for a techy, finance feel */
   --background-primary: #1a1a2e;
-  
-  /* Primary color, a deep blue for emphasis */
   --primary-color: #3b82f6;
   --primary-hover: #2563eb;
   --primary-active: #1d4ed8;
-  
-  /* Secondary color, a slightly lighter shade for secondary elements */
   --secondary-color: #2e2e4d;
   --secondary-hover: #3e3e5d;
   --secondary-active: #4e4e6d;
-  
-  /* Background colors for different elements */
-  --background-secondary: #262645; /* Darker for main content areas */
-  --background-tertiary: #333355; /* For hover states, slightly lighter */
-  
-  /* Text colors */
-  --text-primary: #ffffff; /* White for main text for high contrast */
-  --text-secondary: #c0c0d6; /* Lighter grey for secondary information */
-  --text-tertiary: #a0a0b6; /* Even lighter for less important details */
-  
-  /* Border colors */
-  --border-color: #333355; /* Matches the tertiary background for subtle separation */
-  --border-hover: #444466; /* Slightly lighter for hover effects */
-  
-  /* Shadow color for depth */
+  --background-secondary: #262645;
+  --background-tertiary: #333355;
+  --text-primary: #ffffff;
+  --text-secondary: #c0c0d6;
+  --text-tertiary: #a0a0b6;
+  --border-color: #333355;
+  --border-hover: #444466;
   --shadow-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -74,55 +61,56 @@ h3 {
   position: relative;
 }
 
-.token-list {
+.token-list, .transaction-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
   width: 100%;
 }
 
-.token-list li {
+.token-list li, .transaction-item {
   padding: 1rem 0;
   border-bottom: 1px solid var(--border-color);
   transition: all 0.2s ease;
 }
 
-.token-list li:hover {
+.token-list li:hover, .transaction-item:hover {
   background-color: var(--background-tertiary);
   transform: translateX(5px);
   box-shadow: 0 2px 4px var(--shadow-color);
 }
 
-.token-list li:last-child {
-  border-bottom: none;
+.token-list li:last-child, .transaction-item:last-child {
+  border-bottom: 1px solid var(--border-color);
 }
 
-.token-info {
+.token-info, .transaction-details {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
+  gap: 0.5rem;
 }
 
-.token-name {
+.token-name, .transaction-date {
   flex: 2;
   text-align: left;
+  font-size: 1rem;
+  color: var(--text-secondary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 1rem;
-  color: var(--text-secondary);
 }
 
-.token-balance {
+.token-balance, .transaction-amount {
   flex: 1;
   text-align: right;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--text-primary);
 }
 
-.token-unit {
+.token-unit, .transaction-flow {
   flex: 1;
   text-align: left;
   font-size: 0.9rem;
@@ -144,4 +132,13 @@ h3 {
   align-items: center;
   gap: 0.5rem;
   border: 1px solid rgba(var(--primary-color), 0.2);
+}
+
+.transactions-section {
+  margin-top: 2rem;
+}
+
+.transaction-flow {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
